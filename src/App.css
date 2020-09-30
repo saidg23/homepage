@@ -1,0 +1,134 @@
+body
+{
+  background-size: cover;
+  background-image: url('./dark-rainy-glass.jpg')
+}
+
+#grid
+{
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto auto;
+}
+
+#clock
+{
+  color: black;
+  background-color: #ffffff70;
+  opacity: 0;
+  backdrop-filter: blur(8px);
+
+  font-family: 'CatV6x129Normal', monospace;
+  font-size: 90pt;
+  text-align: center;
+
+  grid-row: 2/3;
+  justify-self: center;
+  align-self: center;
+
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+
+  position: relative;
+
+  animation-name: rise;
+  animation-duration: 0.51s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#weather
+{
+  color: white;
+  background-color: #00000099;
+  opacity: 0;
+  backdrop-filter: blur(8px);
+
+  font-family: 'LatoLight', sans-serif;
+  font-size: 25pt;
+  line-height: 10pt;
+
+  grid-row: 3/4;
+  justify-self: center;
+  align-self: center;
+
+  padding: 1rem 2rem;
+  border-radius: 5px;
+
+  position: relative;
+
+  animation-name: rise;
+  animation-duration: 0.5s;
+  animation-delay: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#weather img
+{
+  border: 1px solid white;
+}
+
+#temp-and-icon-div
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 1000px)
+{
+  #clock
+  {
+    font-size: 60pt;
+  }
+
+  #weather
+  {
+    font-size: 15pt;
+  }
+
+  #weather img
+  {
+    width: 40px;
+    height: auto;
+  }
+
+}
+
+@keyframes rise
+{
+  from
+  {
+    top: 100px;
+  }
+
+  to
+  {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px)
+{
+  #clock
+  {
+    font-size: 40pt;
+  }
+
+  #weather
+  {
+    font-size: 12pt;
+  }
+
+  #weather img
+  {
+    width: 30px;
+    height: auto;
+  }
+}
