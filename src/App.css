@@ -1,7 +1,13 @@
-body
+#bg-image
 {
-  background-size: cover;
-  background-image: url('./dark-rainy-glass.jpg')
+  width: auto;
+  height: 200vh;
+  position: fixed;
+  display: block;
+  left: 50%;
+  margin-left: calc(-200vh * 16 / 9 / 2);
+
+  z-index: -100;
 }
 
 #grid
@@ -19,9 +25,9 @@ body
   color: black;
   background-color: #ffffff70;
   opacity: 0;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(13px);
 
-  font-family: 'CatV6x129Normal', monospace;
+  font-family: 'LatoBold', monospace;
   font-size: 90pt;
   text-align: center;
 
@@ -30,23 +36,20 @@ body
   align-self: center;
 
   padding: 0.8rem 2rem;
-  border-radius: 5px;
+  border: 3px solid white;
+  border-radius: 10px;
+
+  box-shadow: 0px 0px 10px black;
 
   position: relative;
-
-  animation-name: rise;
-  animation-duration: 0.51s;
-  animation-delay: 0.5s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
 }
 
-#weather
+.weather
 {
-  color: white;
-  background-color: #00000099;
+  color: black;
+  background-color: #ffffff70;
   opacity: 0;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(13px);
 
   font-family: 'LatoLight', sans-serif;
   font-size: 25pt;
@@ -54,21 +57,19 @@ body
 
   grid-row: 3/4;
   justify-self: center;
-  align-self: center;
+  align-self: start;
 
   padding: 1rem 2rem;
-  border-radius: 5px;
+  border: 3px solid white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px black;
 
   position: relative;
 
-  animation-name: rise;
-  animation-duration: 0.5s;
-  animation-delay: 0.8s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+  animation-delay: 0.1s;
 }
 
-#weather img
+.weather img
 {
   border: 1px solid white;
 }
@@ -80,6 +81,21 @@ body
   justify-content: space-between;
 }
 
+#temp-and-icon-div p
+{
+  font-family: 'LatoBold', sans-serif;
+  font-size: 1.6em;
+}
+
+.rise-animation
+{
+  animation-name: rise;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
 @media (max-width: 1000px)
 {
   #clock
@@ -87,17 +103,55 @@ body
     font-size: 60pt;
   }
 
-  #weather
+  .weather
   {
     font-size: 15pt;
   }
 
-  #weather img
+  .weather img
   {
     width: 40px;
     height: auto;
   }
 
+}
+
+@media (max-width: 600px)
+{
+  #clock
+  {
+    font-size: 40pt;
+  }
+
+  .weather
+  {
+    font-size: 12pt;
+  }
+
+  .weather img
+  {
+    width: 30px;
+    height: auto;
+  }
+}
+
+@media (max-height: 600px)
+{
+  #clock
+  {
+    font-size: 30pt;
+  }
+
+  .weather
+  {
+    font-size: 10pt;
+  }
+
+  .weather img
+  {
+    width: 30px;
+    height: auto;
+  }
 }
 
 @keyframes rise
@@ -111,24 +165,5 @@ body
   {
     top: 0;
     opacity: 1;
-  }
-}
-
-@media (max-width: 600px)
-{
-  #clock
-  {
-    font-size: 40pt;
-  }
-
-  #weather
-  {
-    font-size: 12pt;
-  }
-
-  #weather img
-  {
-    width: 30px;
-    height: auto;
   }
 }

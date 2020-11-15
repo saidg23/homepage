@@ -5,7 +5,8 @@ class Clock extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            time: '00:00:00 AM'
+            time: '00:00:00 AM',
+            className: ''
         }
 
         this.updateTime = this.updateTime.bind(this);
@@ -39,12 +40,12 @@ class Clock extends React.Component{
             hours = '0' + hours;
         }
 
-        this.setState({time: hours + ':' + minutes + ':' + seconds + period});
+        this.setState({time: hours + ':' + minutes + ':' + seconds + period, className: 'rise-animation'});
     }
 
     render(){
         return(
-            <div id='clock'>
+            <div className={this.state.className} id='clock'>
                 {this.state.time}
             </div>
         );
@@ -59,7 +60,8 @@ class Weather extends React.Component{
             temperature: 'N/A',
             wind: 'N/A',
             forecast: 'N/A',
-            imageUrl: ''
+            imageUrl: '',
+            className: 'weather'
         }
 
         this.getWeatherData = this.getWeatherData.bind(this);
@@ -81,14 +83,15 @@ class Weather extends React.Component{
         this.setState({wind: 'Wind: ' + weatherData.properties.periods[0].windSpeed + ' ' + weatherData.properties.periods[0].windDirection});
         this.setState({forecast: weatherData.properties.periods[0].shortForecast});
         this.setState({imageUrl: weatherData.properties.periods[0].icon});
+        this.setState({className: 'weather rise-animation'});
         clearInterval(this.interval);
     }
 
     render(){
         return(
-            <div id="weather">
+            <div className={this.state.className}>
                 <div id='temp-and-icon-div'>
-                    <img src={this.state.imageUrl} />
+                    <img src={this.state.imageUrl} alt="weather icon" />
                     <p>{this.state.temperature}&deg;F</p>
                 </div>
                 <p>Kenner, LA</p>
@@ -102,6 +105,7 @@ class Weather extends React.Component{
 function App() {
     return (
     <div className="App">
+        <img id='bg-image' src={require( './dark-rainy-glass.jpg' )} alt='rainy-glass' />
         <div id='grid'>
             <Clock />
             <Weather />
